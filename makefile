@@ -1,6 +1,6 @@
 CC = g++
 DEBUG = -g
-CFLAGS = -Wall -c -fPIC $(DEBUG) -Iinclude 
+CFLAGS = -Wall -o2 -c -fPIC $(DEBUG) -Iinclude 
 LFLAGS = -Wall $(DEBUG) -shared
 
 libeddi-commons.so: ByteCode.o Timer.o
