@@ -8,25 +8,27 @@ using namespace std;
 
 class SimpleCall {
    public:
-	int m_bytecode;
-	SimpleCall(int bytecode) : m_bytecode(bytecode) {}
+	ByteCode m_bytecode;
+	SimpleCall(ByteCode bytecode) : m_bytecode(bytecode) {}
 };
 
 class OneOperandCall {
    public:
-	int m_bytecode;
+	ByteCode m_bytecode;
 	std::string m_litteral;
-	OneOperandCall(int bytecode, string litteral) : m_bytecode(bytecode), m_litteral(litteral) {}
+	OneOperandCall(ByteCode bytecode, string litteral) : m_bytecode(bytecode), m_litteral(litteral) {}
 };
 
-void writeOneOperandCall(ofstream* outStream, int bytecode, string litteral){
-	OneOperandCall call(bytecode, litteral);
-
-	outStream->write((char*)&call, sizeof(call));
+template<typename T>
+std::ostream& binary_write(std::ostream* os, const T& value){
+    return os->write(reinterpret_cast<const char*>(&value), sizeof(T));
 }
 
-void writeSimpleCall(ofstream* outStream, int bytecode){
-	SimpleCall call(bytecode);
+void writeOneOperandCall(ofstream* outStream, ByteCode bytecode, string litteral){
+	binary_write(outStream, &bytecode);
+	binary_write(outStream, &litteral);
+}
 
-	outStream->write((char*)&call, sizeof(call));
+void writeSimpleCall(ofstream* outStream, ByteCode bytecode){
+	binary_write(outStream, &bytecode);
 }
