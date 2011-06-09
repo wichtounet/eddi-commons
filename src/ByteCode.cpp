@@ -25,6 +25,10 @@ void writeSimpleCall(ofstream* stream, ByteCode bytecode){
 	binary_write(stream, (int) bytecode);
 }
 
+void writeHeader(ofstream* stream){
+	binary_write(stream, (int)('E' + 'D' + 'D' + 'I'));
+}
+
 void writeEnd(ofstream* stream){
 	binary_write(stream, (int) END);
 }
@@ -35,6 +39,12 @@ ByteCode readByteCode(ifstream* stream){
 	int bytecode;
 	binary_read(stream, bytecode);
 	return (ByteCode) bytecode;
+}
+
+int readHeader(ifstream* stream){
+	int header;
+	binary_read(stream, header);
+	return header;
 }
 
 char readConstantType(ifstream* stream){
