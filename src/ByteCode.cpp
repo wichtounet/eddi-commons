@@ -3,27 +3,11 @@
 #include <fstream>
 
 #include "ByteCode.h"
+#include "IO.h"
 
 using namespace std;
 
-class SimpleCall {
-   public:
-	ByteCode m_bytecode;
-	SimpleCall(ByteCode bytecode) : m_bytecode(bytecode) {}
-};
-
-class OneOperandCall {
-   public:
-	ByteCode m_bytecode;
-	std::string m_litteral;
-	OneOperandCall(ByteCode bytecode, string litteral) : m_bytecode(bytecode), m_litteral(litteral) {}
-};
-
 /* Write */
-
-std::ostream& binary_write_string(std::ostream* stream, string value){
-	return stream->write(value.c_str(), value.length());
-}
 
 void writeLitteral(ofstream* stream, string litteral){
 	binary_write(stream, 'S');
@@ -53,7 +37,13 @@ ByteCode readByteCode(ifstream* stream){
 	return (ByteCode) bytecode;
 }
 
-std::string binary_read_string(std::istream* stream){
+char readConstantType(ifstream* stream){
+	char type;
+	binary_read(stream, type);
+	return type;
+}
+
+string readLitteral(ifstream* stream){
 	size_t size;
 	binary_read(stream, size);
 	
