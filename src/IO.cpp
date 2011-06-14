@@ -5,14 +5,14 @@
 //  http://www.boost.org/LICENSE_1_0.txt)
 //=======================================================================
 
-#include <iostream>
-#include <iomanip>
 #include <fstream>
 
 #include "IO.h"
 
-using namespace std;
+using std::ostream;
+using std::ofstream;
+using std::string;
 
-std::ostream& binary_write_string(std::ofstream* stream, string value){
+ostream& binary_write_string(ofstream* stream, string value){
 	return stream->write(value.c_str(), value.length());
 }

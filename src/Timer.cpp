@@ -5,9 +5,7 @@
 //  http://www.boost.org/LICENSE_1_0.txt)
 //=======================================================================
 
-#include <iostream>
 #include <cstdlib>
-#include <sys/time.h>
 
 #include "Timer.h"
 
