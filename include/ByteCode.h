@@ -18,7 +18,7 @@ enum ByteCode {
 	ISTORE = 21,
 
 	LDCI = 30,
-	LCDS = 31,
+	LDCS = 31,
 
 	PRINTI = 40,
 	PRINTS = 41
