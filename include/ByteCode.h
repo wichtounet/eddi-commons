@@ -24,7 +24,13 @@ enum ByteCode {
 	PRINTS = 41, 
 
 	IADD = 50, 
-	SADD = 51
+	SADD = 51,
+
+	ISUB = 60, 
+
+	IMUL = 70, 
+
+	IDIV = 80
 };
 
 #endif
