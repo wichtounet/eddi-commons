@@ -7,7 +7,7 @@
 
 #include <cstdlib>
 
-#include "Timer.h"
+#include "Timer.hpp"
 
 Timer::Timer(){
 	gettimeofday(&startTime, NULL);
